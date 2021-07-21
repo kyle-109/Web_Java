@@ -1,7 +1,6 @@
 package Day06;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -18,13 +17,13 @@ public class Day06_2 {
 		// 메서드: 배열명.length
 		// 컴파일 후 크기변경 불가 [ 정해져있는 메모리 사용시 용이]
 	
-	//정렬이 되어있으면 검색이 빠르기에 중요하다
+	//정렬이 되어있으면 검색이 빠르기에 정렬여부가 중요하다
 	
 	// 변수 : 메모리[자원] 할당받아 데이터 저장하는 공간 1개
 	public static void main(String[] args) {
 		
 		//배열선언
-		int[] arr1 = new int[3]; // int형 변수 3개를 저장할 수 있는 메모리 할당받은 배열
+		int[] arr1 = new int[3]; // int형 변수 3개를 저장할 수 있는 메모리를 할당받은 배열
 		// 1. 자료형/클래스[]
 			// 2. 배열명 (임의)
 				// 3. new : 메모리할당 연산자

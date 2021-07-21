@@ -10,7 +10,7 @@ public class Day06_1 {
 		
 		
 		// switch
-			// 형태 : switch(key: 검사대상){case 검사 : 실행문}
+			// 형태 : switch(key: 검사대상) case 검사 : 실행문
 			// 1. (key) 에 해당하는 case 찾은 후에 아래 case를 모두 실행
 			// 2. break; : switch 혹은 반복문 탈출.
 			// 3. 경우의 수가 정해져 있는 경우 switch가 더 빠르다.
@@ -41,7 +41,7 @@ public class Day06_1 {
 		// 예3) 세 점수의 평균이 90점이상이면 "A" 80점이상이면 "B" 나머지 탈락
 		int korean = 80, english = 80, math = 90;
 		int average = (korean + english + math)/3;
-		switch(average/10) {
+		switch(average/10) {//조건이 10의 자리는 동일하기에 switch조건을 /10을 해서 넣었다
 			case 9: System.out.println("A등급"); break;
 			case 8: System.out.println("B등급"); break;
 			default : System.out.println("탈락"); break;
@@ -56,7 +56,7 @@ public class Day06_1 {
 		}
 			
 		System.out.println();
-//		// while : 조건에 따른 반복실행 = 무한루프
+//		// while : 조건에 따른 반복실행 = 무한루프에 많이 쓰인다. 괄호안에 조건식만 있기 때문에
 //			초기값
 //			while (조건문) {
 //				증감식
