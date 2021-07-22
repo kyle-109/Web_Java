@@ -18,10 +18,12 @@ public class Day07_회원제프로그램 {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		String[][] people = new String[100][2]; //회원명부
+		String[][] text = new String[100][2]; //게시판
 		int count =0; //회원수
+		int textCount=0;//글수
 		String[][] temp = new String[1][2]; // 로그인시 사용하는 임시저장용 배열
-		boolean condition = true;
-		boolean condition2 = true;
+		boolean condition = true; // 회원가입 트리거
+		boolean condition2 = true; //로그인 트리거
 		while(true) {
 			System.out.print("[[[ 회원제 프로그램 ]]]");
 			System.out.print("\n[[1.회원가입]] [[2.로그인]] [[3.종료]] : ");
@@ -67,7 +69,7 @@ public class Day07_회원제프로그램 {
 						
 						while(true) {//로그인 된 후
 							System.out.print("[[[ 회원제 프로그램 ]]]");
-							System.out.print("\n[[1.회원탈퇴]] [[2.비밀번호변경]] [[3.로그아웃]] : ");
+							System.out.print("\n[[1.회원탈퇴]] [[2.비밀번호변경]] [[3.로그아웃]] [[4.게시판 글쓰기]] [[5.게시판 글목록]]: ");
 							int choice2 = scanner.nextInt();
 							if(choice2==1) {
 								//탈퇴한 회원뒤에 있는 회원들을 한칸씩 땡긴다.
@@ -92,11 +94,22 @@ public class Day07_회원제프로그램 {
 								System.out.println("패스워드변경완료[[자동로그아웃됩니다]]");
 								break;
 							}
-							else {
+							else if(choice2==3) {//로그아웃
 								System.out.println("[[로그아웃]] 로그아웃되었습니다.");
 							}
-								break;
+							else if(choice2==4) {//게시판 글쓰기
+								System.out.print("제목을 입력해주세요:\n"); text[textCount][0]= scanner.next();
+								System.out.print("내용을 입력해주세요:\n"); text[textCount][1]= scanner.next();
+								textCount++;
 							}
+							else {//게시판 글목록출력
+								for(int l = 0; l<textCount; l++) {
+									System.out.println(l+"번째 글 제목은 \""+text[l][0]+"\"입니다");
+									System.out.println(l+"번째 글 내용은 \""+text[l][1]+"\"입니다");
+								}
+							}
+							
+						}
 						
 						condition2 = false;
 						break;
