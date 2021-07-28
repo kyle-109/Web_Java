@@ -2,10 +2,12 @@ package Day08;
 
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Scanner;
 
 public class Board {
 	// 게시판 클래스
 	
+	Scanner scanner = new Scanner(System.in);
 	
 	// 1. 필드
 	
@@ -93,20 +95,85 @@ public class Board {
 			}
 		}	
 		// 3. 글수정
-		public void update() {
+		public void update(int number) { // 현재 메서드 외부로부터 현재 메서드로 들어오는 데이터[인수]
+			//인수는 이름이 달라도 자료형은 같아야 한다.
+			Scanner scanner = new Scanner(System.in);
 			System.out.println("[[[ 글수정 페이지 ]]]");
+			int index = findboard(number);
+			if(index==-1) return;
+			System.out.print("제목을 다시 입력하세오:"); Day08_2.boardlist[index].title =  scanner.nextLine();
+			System.out.print("내용을 다시 입력하세요:"); Day08_2.boardlist[index].content = scanner.nextLine();
+
+			System.out.println("[[글수정]] 완료");
 		}
 		// 4. 글삭제
-		public void delete() {
-			
+		public void delete(int number) {
+			System.out.println("[[ 해당 게시물이 삭제되었습니다 ]]");
+			int index = findboard(number); // 게시물 찾기 메서드 호출
+			if(index==-1) return; // 만약에 게시물이 없으면 메소드 종료
+							
+			// 해당 게시물번호의 객체 삭제
+			Day08_2.boardlist[index] = null;
+			//삭제된 게시물 뒤로 한칸씩 당기기
+			for(int j = index; j<Day08_2.boardlist.length; j++) {
+				// j는 삭제된 게시물 뒤 게시물들
+				if(Day08_2.boardlist[j+1]!= null) {
+					Day08_2.boardlist[j] = Day08_2.boardlist[j+1];
+				}
+				else {
+					Day08_2.boardlist[j]=null;
+					break;
+				}
+			}
 		}
 		// 5. 조회수증가
 		public void count() {
-			
+			this.viewcount++; //조회수 증가
 		}
 		// 6. 글 상세페이지
-		public void view(int ch2) { //인수
+		public void view(int number) { //인수, 삭제할 게시물 번호를 넣는다.
+			
+			Board board = null;
+			
+			int index = findboard(number); //게시물 찾기 메소드 호출
+			if(index==-1) return; //만약에 -1이면 현재 메소드 종료
+			
+			//게시물 찾기 메소드
+			board = Day08_2.boardlist[index]; // 찾은 게시물의 위치의 게시물 가져오기
+			board.count(); // 조회수 증가 메서드 호출
+			
 			System.out.println("[[[ 상세페이지 ]]]");
+			System.out.println(" 제목 : " +board.title);
+			System.out.println(" 작성자 : "+board.writer+" 조회수 : "+board.viewcount+" 작성자 : "+board.bdate);
+			System.out.println(" 내용 : " + board.content);
+			System.out.println("1. 수정 2. 삭제 3. 댓글작성 4. 뒤로가기");
+			Scanner scanner = new Scanner(System.in);
+			int ch = scanner.nextInt();
+			if(ch==1) { 
+				update(number);
+				return;
+			}
+			if(ch==2) {
+				delete(number); 
+				return;
+			}
+			if(ch==3) {}
+			if(ch==4) {
+				return; //메소드 종료
+			}
 		}
-
+		
+		//게시물번호에 해당하는 배열의 위치를 찾는 메서드
+		public int findboard(int number) {
+			// 반환타입 : 찾은 배열의 위치 반환
+			for(int i = 0; i<Day08_2.boardlist.length; i++) {
+				if(Day08_2.boardlist[i] != null && Day08_2.boardlist[i].number == number) {
+							// i번째 인덱스의 배열값이 null이 아니면서 i번째 인덱스의 배열값의 게시물번호가 선택한 게시물번호와 같으면
+					return i; // 찾은 게시물의 배열위치 반환
+				}
+			}
+			System.out.println("[[오류]] 해당 게시물 번호가 없습니다..");
+			return -1; // 배열 인덱스 시작은 0부터 이기에 못찾앗다는 의미
+		}
+			  
 }
