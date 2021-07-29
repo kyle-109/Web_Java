@@ -43,10 +43,10 @@ public class Board {
 			System.out.println("[[[ 글쓰기 페이지 ]]]");
 			System.out.print("글제목 : "); String title=scanner.nextLine();
 			System.out.print("글내용 : "); String content = scanner.nextLine();
-			System.out.print("작성자 : "); String writer = scanner.next();
+			System.out.print("작성자 : "); String writer = scanner.nextLine();
 			
 			// 1. 객체 생성
-			int number = -1;
+			int number = -1; 
 				// 게시물 번호 [1. 자동[DB] 2. 수동]
 				for(int i = 0; i<Day08_2.boardlist.length; i++) {
 					if(Day08_2.boardlist[i] == null) {
@@ -149,15 +149,17 @@ public class Board {
 			System.out.println("1. 수정 2. 삭제 3. 댓글작성 4. 뒤로가기");
 			Scanner scanner = new Scanner(System.in);
 			int ch = scanner.nextInt();
-			if(ch==1) { 
+			if(ch==1) { // 글 수정
 				update(number);
 				return;
 			}
-			if(ch==2) {
+			if(ch==2) { // 글 삭제
 				delete(number); 
 				return;
 			}
-			if(ch==3) {}
+			if(ch==3) { // 댓글 작성
+				
+			}
 			if(ch==4) {
 				return; //메소드 종료
 			}
