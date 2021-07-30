@@ -15,7 +15,6 @@ public class Day10_3 {
 			int bank = scanner.nextInt();
 			while(true) {
 				int i = 1;
-				if(i==-1) {break;}
 				System.out.print("1. 계좌생성  ");
 				System.out.print("2. 계좌입금  ");
 				System.out.print("3. 계좌출금  ");

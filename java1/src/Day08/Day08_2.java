@@ -13,6 +13,7 @@ public class Day08_2 {
 	
 	public static Board[] boardlist = new Board[100];
 
+
 	//모든 코드의 시작 지점은 main
 	public static void main(String[] args) {
 		

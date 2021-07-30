@@ -146,7 +146,7 @@ public class Board {
 			System.out.println(" 제목 : " +board.title);
 			System.out.println(" 작성자 : "+board.writer+" 조회수 : "+board.viewcount+" 작성자 : "+board.bdate);
 			System.out.println(" 내용 : " + board.content);
-			System.out.println("1. 수정 2. 삭제 3. 댓글작성 4. 뒤로가기");
+			System.out.println("1. 수정 2. 삭제 3. 댓글작성 4. 댓글삭제 5. 뒤로가기");
 			Scanner scanner = new Scanner(System.in);
 			int ch = scanner.nextInt();
 			if(ch==1) { // 글 수정
@@ -160,7 +160,10 @@ public class Board {
 			if(ch==3) { // 댓글 작성
 				
 			}
-			if(ch==4) {
+			if(ch==4) { // 댓글 삭제
+			
+			}
+			if(ch==5) {
 				return; //메소드 종료
 			}
 		}
