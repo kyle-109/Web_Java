@@ -28,6 +28,8 @@ public class Day12_4 {
 			// 3. 회원구분짓기1
 			String[] memberList = entireStr.split("\n");// 문자열.split("자르기기준");
 			
+			System.out.println(memberList.length);
+			
 			// 4. 객체간 필드 구분해서 배열에 저장
 			for(int i = 0; i<memberList.length; i++) {
 				String[] field = memberList[i].split(",");

@@ -18,9 +18,21 @@ Day7: 2차원 배열[로또 판별기, 회원제 프로그램]
 		2. System.in : 입력장치
 			
 			
-	*String 클래스
-		문자열을 저장하는 객체
-
+	*String 클래스: 문자열을 저장하는 객체
+		* 바이트 => 문자열
+		* 메소드
+			1. 문자 추출[charAt()]
+			2. 문자열 비교[equals()]
+			3. 문자열 ---> 바이트배열[getBytes()]
+			4. 문자열 찾기 [indexOf()]
+			5. 문자열 길이[length() ] 반환 : 문자수(공백포함)
+			6. 문자열 잘라내기[ substring() ] : 인덱스[위치] 기준
+			7. 문자열 분해[ split() ] : 문자 기준
+			8. 문자열 치환[replace("교체할 문자", "새로운 문자")]
+			9. 대소문자 변환[toLowerCase(): 소문자변환/toUpperCase(): 대문자변환]
+			10. 공백 제거[trim()] :앞뒤 공백만 제거
+			11. 문자열 변환[valueOf()]
+			
 	*Scanner 클래스
 		키보드 입력받는 객체
 		Scanner 객체명 = new Scanner(System.in)
