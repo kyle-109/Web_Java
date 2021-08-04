@@ -29,7 +29,7 @@ public class Day13_1 {
 		String strArr3 = new String(byteArr3);
 		System.out.println("변환후 : "+strArr3);
 		
-		String strArr4 = new String(byteArr3, 6, 4); // index 6부터 4개 변환, 7번째부터 4
+		String strArr4 = new String(byteArr3, 6, 4); // index 6부터 4개 변환, 7번째부터 4개.
 		System.out.println("일부 변환후 : "+ strArr4);
 		
 		// 입력받기

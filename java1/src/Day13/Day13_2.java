@@ -6,7 +6,7 @@ public class Day13_2 {
 	
 	public static void main(String[] args) {
 		
-		// 문자열 찾기 [indexof] 반환 : 찾은 문자의 인덱스 번호
+		// 문자열 찾기 [indexOf()] 반환 : 찾은 문자의 인덱스 번호
 		String strArr1 = "자바 프로그래밍";
 		int index = strArr1.indexOf("프로그래밍");
 		System.out.println("검색한 문자의 위치 : "+index);
@@ -23,7 +23,7 @@ public class Day13_2 {
 				System.out.println("파이썬 관련 서적이 아닙니다");
 			}
 			
-		// 문자열 길이 [length() ] 반환 : 문자수(공백포함)
+		// 문자열 길이 [length()] 반환 : 문자수(공백포함)
 			System.out.println("strArr1의 글자수 : "+strArr1.length());
 			
 			//유효성검사
