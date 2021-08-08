@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 
 public class Day15_1 {
 	//Toolkit은 java 11부터 지원x
+	// 프로젝트 build path -> configure build path-> libraries tab의 add library->JRE system library-> execution library->JavaSE 1.8추가
 	//내 컴퓨터에서는 java 8부터 지원
 	
 	// 스레드 : 프로세스 내에서 실행되는 흐름의 단위
