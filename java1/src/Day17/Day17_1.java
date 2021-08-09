@@ -71,7 +71,7 @@ public class Day17_1 {
 		
 		// 리스트와 반복문
 		for(int i = 0; i<arrayList.size();i++) {
-			System.err.println(arrayList.get(i));
+			System.out.println(arrayList.get(i));
 		}
 		// 리스트와 반복문
 		
@@ -102,7 +102,7 @@ public class Day17_1 {
 		
 		// 3. LinkedList 클래스
 			// 차이점 
-				// ArrayList: 검색용이
+				// ArrayList: 검색용이, 좀더 많이 쓸 예정.
 				// LinkedList: 삽입, 삭제가 용이
 		
 		ArrayList<String> arrayList2 = new ArrayList<>();
