@@ -8,6 +8,7 @@ public class ConsoleProgram {
 	// 필드(변수, 객체, 배열 등)
 		// 1. 컬렉션 프레임워크 [회원, 게시물, 댓글 목록]
 		static ArrayList<Member> memberlist = new ArrayList<>();
+		static ArrayList<Board> boardList = new ArrayList<>();
 		// 2. 입력객체
 		static Scanner scanner = new Scanner(System.in);
 			// System.in[키보드] -----> (스트림)바이트 ---> 바이트 scanner 클래스 객체에 저장
@@ -23,7 +24,7 @@ public class ConsoleProgram {
 		try {//파일에서 회원불러오기
 		FileUtil.fileload(1);// 프로그램을 시작하면 먼저 파일에서 회원불러오기
 		}catch(Exception e) {
-			System.out.println("[[파일처리 오류]] : 관리자에게 문의");
+			System.out.println("[[파일처리 오류]] : 관리자에게 문의" + e);
 		}
 		while(true) {//while 시작
 			System.out.println("\n[[[ 회원제 커뮤니티 ]]]");
@@ -32,9 +33,16 @@ public class ConsoleProgram {
 			try {// 만약에 숫자가 아닌 문자를 입력했을 경우 예외처리
 				int ch = scanner.nextInt();
 				Member temp = new Member();// 회원용 메소드 호출용, 깡통을 만든것이라 메모리를 크게 차지하지 않는다.
-				
+				Board temp2 = new Board();
 				if(ch == 1) {// 로그인선택 시작
-					
+					Member login = temp.login(); // 로그인성공시 객체반환, 실패시 null 반환
+					if(login!=null) {// 게시판 메뉴 호출[인수: login]
+						System.out.println("게시판");
+						// 게시판 호출 성공
+						temp2.boardlist(login);
+						login = null;
+					}// 게시판 메뉴 호출
+					System.out.println("로그인 실패");
 				}// 로그인선택 끝
 				
 				if(ch == 2) {// 회원가입선택 시작

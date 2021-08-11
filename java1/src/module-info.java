@@ -7,4 +7,5 @@ module java1 {
 	// 사용할 패키지명 설정
 	// opens 패키지명 to 라이브러리명
 	opens Day14 to actiavtion, mail;
+	opens Day19 to actiavtion, mail;
 }
