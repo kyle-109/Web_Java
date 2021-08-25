@@ -19,7 +19,7 @@ public class Member {
 	private String name;
 	private String email;
 	private int point;
-	static int totalno = 0; // 전체회원수 [회원탈퇴시에도 누적]
+
 	
 		// private : 현재 클래스내에서만 호출 가능. 개인정보가 들어간 것은 private
 	
@@ -48,7 +48,7 @@ public class Member {
 			
 			// 유효성 검사
 				// 1. 중복체크 [입력한 아이디가 회원 목록 리스트에 존재하면 X]
-				for(Member temp : ConsoleProgram.memberlist) {
+				for(Member temp : ConsoleProgram.memberList) {
 					if(temp.id.equals(id)) {
 						System.out.println("[[알림 : 가입실패]] : 동일한 아이디가 존재합니다");
 						return;
@@ -80,23 +80,30 @@ public class Member {
 			// 파일처리
 			try {
 			// 회원가입 성공 : 객체 => 리스트 => 파일처리
-				FileUtil.fileload(0);// 로그를 불러와 총 멤버수를 최신화
-				Member newMember = new Member(totalno+1, id, passWord, name, email, 0);
-				ConsoleProgram.memberlist.add(newMember); // 리스트에 담기
 				
-				FileUtil.filesave(0, newMember.getNo());// 최신화된 총 멤버수를 로그파일에 저장
+				FileUtil.fileload(0);// 로그를 불러와 총 멤버수를 최신화
+				Member newMember = new Member(ConsoleProgram.mtotalno+1, id, passWord, name, email, 0);
+				ConsoleProgram.memberList.add(newMember); // 리스트에 담기
+				System.out.println(ConsoleProgram.memberList.size());
+				ConsoleProgram.mtotalno++;
+			}catch(Exception e) {
+				System.out.println("[[파일처리 오류1]] : 관리자에게 문의");
+			}
+			try {
+			// 회원가입 성공 : 객체 => 리스트 => 파일처리
+				FileUtil.logSave(1, ConsoleProgram.mtotalno);// 최신화된 총 멤버수를 로그파일에 저장
 				FileUtil.filesave(1, 0);//멤버를 추가할때마다 전체 리스트의 멤버를 등록
 			}catch(Exception e) {
-				System.out.println("[[파일처리 오류]] : 관리자에게 문의");
+				System.out.println("[[파일처리 오류2]] : 관리자에게 문의");
 			}
 			System.out.println("회원가입성공!");
 		}
 		
 		// 2. 로그인
 		public Member login() {
-			System.out.print("[[[ 아이디: ]]]");String id = ConsoleProgram.scanner.next();
-			System.out.print("[[[ 비밀번호: ]]]");String password = ConsoleProgram.scanner.next();
-			for(Member member: ConsoleProgram.memberlist) {
+			System.out.print("[[[ 아이디 ]]]: ");String id = ConsoleProgram.scanner.next();
+			System.out.print("[[[ 비밀번호 ]]]: ");String password = ConsoleProgram.scanner.next();
+			for(Member member: ConsoleProgram.memberList) {
 				if(member.id.equals(id)&&member.passWord.equals(password)) {
 					System.out.println("[[ 안녕하세요 "+member.name+"님 ]]");
 					return member;// 로그인된 회원정보 객체를 전달
@@ -107,9 +114,9 @@ public class Member {
 		}
 		// 3. 아이디찾기[이름과 이메일 동일한 경우 => 아이디출력]
 		public void findId() {
-			System.out.print("[[[ 이름: ]]]"); String name = ConsoleProgram.scanner.next();
-			System.out.print("[[[ 이메일: ]]]"); String email = ConsoleProgram.scanner.next();
-			for(Member member: ConsoleProgram.memberlist) {
+			System.out.print("[[[ 이름 ]]]: "); String name = ConsoleProgram.scanner.next();
+			System.out.print("[[[ 이메일 ]]]: "); String email = ConsoleProgram.scanner.next();
+			for(Member member: ConsoleProgram.memberList) {
 				if(member.name.equals(name)&&member.email.equals(email)) {
 					System.out.println("[[ 회원님의 아이디는 "+member.id+"입니다 ]]");
 					return;
@@ -119,9 +126,9 @@ public class Member {
 		}
 		// 4. 비밀번호찾기[아이디와 이멜일 동일한 경우 => 비밀번호: 메일전송]
 		public void findPassword() {
-			System.out.print("[[[ 아이디: ]]]"); String id = ConsoleProgram.scanner.next();
-			System.out.print("[[[ 이메일: ]]]"); String email = ConsoleProgram.scanner.next();
-			for(Member member: ConsoleProgram.memberlist) {
+			System.out.print("[[[ 아이디 ]]]: "); String id = ConsoleProgram.scanner.next();
+			System.out.print("[[[ 이메일 ]]]: "); String email = ConsoleProgram.scanner.next();
+			for(Member member: ConsoleProgram.memberList) {
 				if(member.id.equals(id)&&member.email.equals(email)) {
 					System.out.println("[[ 회원님의 이메일로 비밀번호를 전송했습니다.]]");
 					sendemail(1, member.email, member.passWord);// type=1 비밀번호찾기 메일전송

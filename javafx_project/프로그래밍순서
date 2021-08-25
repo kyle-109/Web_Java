@@ -1,0 +1,22 @@
+===프로그래밍 순서===
+1. DB 설계
+2. DTO 클래스[ex.Domain.Member.java]
+3. DAO 클래스
+4. 프론트엔드[javafx 씬빌더]
+5. controller[java]
+
+	1. 게시판 db설계
+	board 테이블
+		게시물번호
+		게시물제목
+		게시물내용
+		게시물작성자
+		게시물작성일
+		게시물조회수
+		
+	2. DTO 클래스
+		
+		
+		
+		DB(DAO)<------> Controller <-----> fxml[씬빌더]
+								   <-dto-> controller

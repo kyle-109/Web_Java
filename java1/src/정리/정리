@@ -5,7 +5,7 @@ Day4: 제어문[키오스크]
 Day5: 반복문[별찍기]
 Day6: switch, while, 1차원 배열
 Day7: 2차원 배열[로또 판별기, 회원제 프로그램]
-
+Day8: 클래스
 
 [[[클래스]]]
 
@@ -87,4 +87,77 @@ Day7: 2차원 배열[로또 판별기, 회원제 프로그램]
 	4. 반복문
 	
 	5. 배열
-		
+	
+	
+메모리 관리방법
+		1. 주기억장치
+			*실행중인 프로그램 메모리관리
+			*휘발성메모리(전기x저장x)
+			*변수
+		2. 보조기억장치
+			*비휘발성 메모리(전기x저장o)
+			*파일처리, DB
+데이터베이스
+	1. DB: 체계화해 통합, 관리하는 데이터의 집합
+	2. SQL: 질의어
+		1. 설치
+		MySQL Installer for windows	
+			450.7M
+		Connector/J
+			platform independent
+			zipfile
+		2. java와 DB 연동하기
+			1. 프로젝트에 라이브러리 추가
+			2. module-info.java에 requires java.sql; opens 패키지명 to java.sql;
+			3. MySQL workbench에 create sql하고 생긴 sql에 create database DB명
+			4. DAO
+				// 1. 해당 드라이브(DB회사별로 드라이브이름 다름) 가져오기
+				Class.forName("com.mysql.cj.jdbc.Drvier");
+				// 2. DB URL 연결[Connection 인터페이스: DB 연결해주는 인터페이스]
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTime=UTC", "root", "1234");
+														//URL "jdbc:mysql://ip주소:포트번호/DB명?DB시간설정, "계정명", "비밀번호") 
+		3. SQL 질의어
+			[ DDL : 정의어 ] 
+			1. create database DB명: [DB]저장소 만들기
+			2. create table DB명.테이블명(필드명1 자료형 속성, 필드명2 자료형 속성 ~~ ) : 해당 저장소[DB] 표[TABLE] 만들기
+			3. drop databse DB명: DB삭제
+			
+			[속성]
+				1. primary key: 기본키
+				2. auto_increment: 자동번호 부여
+				3. not null : null 제외
+				4. datetime : 8바이트 날짜/시간 자료형
+				5. current_timestamp: 생성시간 기록
+				
+			[자료형]
+				1. varchar(문자길이): 문자열 자료형
+				2. int: 4바이트 정수형
+			
+			
+			[ DML : 조작어 ]
+			1. insert : 해당 테이블의 데이터 추가
+					INSERT into 테이블명(필드1, 필드2, 필드3 ~~~ ) values(값1, 값2, 값3 ~~)
+					*만약에 모든 필드에 삽입할경우
+					INSERT into 테이블명 values(값1, 값2, 값3 ~~)
+			
+			2. select : 해당 테이블에서 필드 검색
+					SELECT 필드 FROM 테이블명 (WHERE 조건)
+					*만약에 모든 필드를 검색할 경우
+					SELECT * FROM 테이블명 (WHERE 조건)
+			
+			3. delete : 해당테이블의 레코드 삭제
+				delete from 테이블명 where 조건 ->조건 없으면 전체 삭제
+				
+			4. update : 해당테이블의 레코드 수정	
+				update 테이블명 set 필드=변경할값1, 필드2=변경할값2 where 조건	
+			
+			*[ 속성 ] 
+				1. where 필드 = 값
+			*[ 연산자 ]	
+				1. and / or 	이면서 / 또는
+						where 필드1 = 값1 and 필드2 = 값2
+				
+		4. DB 용어
+				필드(열,속성): 세로 단위
+				레코드(행, 튜플): 가로 단위
+				 

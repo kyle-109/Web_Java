@@ -7,8 +7,13 @@ public class ConsoleProgram {
 	
 	// 필드(변수, 객체, 배열 등)
 		// 1. 컬렉션 프레임워크 [회원, 게시물, 댓글 목록]
-		static ArrayList<Member> memberlist = new ArrayList<>();
+		static ArrayList<Member> memberList = new ArrayList<>();
 		static ArrayList<Board> boardList = new ArrayList<>();
+		static ArrayList<Reply> replyList = new ArrayList<>();
+		
+		static int mtotalno = 0;// 전체 회원수
+		static int btotalno = 0;// 전체 게시글수
+		static int rtotalno = 0;// 전체 댓글수
 		// 2. 입력객체
 		static Scanner scanner = new Scanner(System.in);
 			// System.in[키보드] -----> (스트림)바이트 ---> 바이트 scanner 클래스 객체에 저장
@@ -22,10 +27,15 @@ public class ConsoleProgram {
 	// 프로그램내 파일들 간의 다른 패키지에서 호출할 것이면 public
 	void programStart() {// 접근제한자 없으면 default, start 시작
 		try {//파일에서 회원불러오기
-		FileUtil.fileload(1);// 프로그램을 시작하면 먼저 파일에서 회원불러오기
+			FileUtil.fileload(1);// 프로그램을 시작하면 먼저 파일에서 회원불러오기
+			FileUtil.fileload(2);// 파일에서 게시물 불러오기
+			FileUtil.fileload(4);// 파일에서 댓글 불러오기
 		}catch(Exception e) {
-			System.out.println("[[파일처리 오류]] : 관리자에게 문의" + e);
+			System.out.println("[[파일처리 오류]] : 관리자에게 문의 " + e);
 		}
+		System.out.println("멤버리스트길이: "+memberList.size());
+		System.out.println("게시글리스트길이: "+boardList.size());
+		System.out.println("댓글리스트길이: "+replyList.size());
 		while(true) {//while 시작
 			System.out.println("\n[[[ 회원제 커뮤니티 ]]]");
 			System.out.print("[[[ 1.로그인 2.회원가입 3.아이디찾기 4.비밀번호찾기 ]]]: ");
@@ -36,38 +46,39 @@ public class ConsoleProgram {
 				Board temp2 = new Board();
 				if(ch == 1) {// 로그인선택 시작
 					Member login = temp.login(); // 로그인성공시 객체반환, 실패시 null 반환
+					
 					if(login!=null) {// 게시판 메뉴 호출[인수: login]
-						System.out.println("게시판");
-						// 게시판 호출 성공
-						temp2.boardlist(login);
-						login = null;
-					}// 게시판 메뉴 호출
-					System.out.println("로그인 실패");
-				}// 로그인선택 끝
-				
-				if(ch == 2) {// 회원가입선택 시작
-					temp.signup();
-				}// 회원가입선택 끝
-				
-				if(ch == 3) {// 아이디찾기 시작
-					
-				}// 아이디찾기 끝
-				
-				if(ch == 4) {// 비밀번호찾기 시작
-					
-				}// 비밀번호찾기 끝
-				
-				if(ch <0 || ch>4) {
-					System.out.println("[[알림: 1,2,3,4 중 하나를 선택하세요]]");
+						while(true) {
+							// 게시물 게시물 출력 
+							temp2.boardlist();
+							System.out.print("[[[ 1.게시물등록 2.게시물조회 3.회원정보[수정/탈퇴] 4.로그아웃 ]]]:  ");
+							scanner.nextLine();
+							int ch2 = scanner.nextInt();
+							if( ch2 == 1 ) { temp2.boardwrite( login ); }
+							if( ch2 == 2 ) { temp2.boardview( login ); }
+							if( ch2 == 3 ) {}
+							if( ch2 == 4 ) { 
+								System.out.println("[[[ 로그아웃 되었습니다 ]]]");
+								login = null; // 로그인된정보 null 바꾸기 
+								break; // 반복문 탈출
+							}
+						}
+						
+					}else {
+						System.out.println(" 로그인 실패 ");
+					}
 				}
-				
+				if( ch == 2 ) { temp.signup(); }
+				if( ch == 3 ) { temp.findId(); }
+				if( ch == 4 ) { temp.findPassword(); }
+				if( ch <=0  || ch >4 ) {
+					System.out.println("\t[[알림 : 1,2,3,4 메뉴 중 선택 가능합니다 ]]");
+				}
 			}
-			catch(Exception e) {
-				System.out.println("[[알림 : 번호만 입력하세요]]");
-				scanner = new Scanner(System.in); // 이걸 안하면 기존값을 계속 불러오게 되기에 기존 값 초기화해야 한다.
+			catch (Exception e) {
+				System.out.println("\t[[알림 : 알수 없는 행동입니다 ]]");
+				scanner = new Scanner(System.in);
 			}
-		}//while 끝
-		
-	}// start 끝
-	
-}
+ 		}
+	}
+}	

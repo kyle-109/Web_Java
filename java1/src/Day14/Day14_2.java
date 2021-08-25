@@ -108,42 +108,42 @@ import javax.mail.internet.MimeMessage;
 
 public class Day14_2 {
 	
-	// �ܺ� API : java mail
-	// ���� : SMTP : Simple Mail Transfer Protocol
-		//  Protocol : ��� �Ծ�
+	// 외부 API : java mail
+	// 메일 : SMTP : Simple Mail Transfer Protocol
+		//  Protocol : 통신규약
 	
-	// 1. ���� ���� ���̺귯�� �ٿ�ε� 
+	// 1. 메일 관련 라이브러리 다운로드 
 		// 1. activation.jar
 		// 2. mail-1.4.7.jar
-	// 2. �ܺ� ���̺귯���� ���� ������Ʈ �߰� 
-		// 1. ���� ������Ʈ ������Ŭ��
+	// 2. 외부 라이브러리를 현재 프로젝트 추가
+		// 1. 현재 프로젝트 오른쪽 클릭
 		// 2. build path => configure build path 
-		// 3. ��[�޴�]���� libraries => add external jars
-		// 4. �ٿ�ε� ���� 2�� ���̺귯�� �߰� 
-			// ** jdk11 ���� �̻�
-			// 1. ��[�޴�]���� libraries => modulepath���� => add external jars
-			// 2.  module-info ���Ͽ� �Ʒ� �߰� 
+		// 3. 탭[메뉴]에서 libraries => add external jars
+		// 4. 다운로드 받은 2개 라이브러리 추가 
+			// ** jdk11 버전 이상
+			// 1. 탭[메뉴]에서 libraries => modulepath선택 => add external jars
+			// 2.  module-info 파일에 아래 추가
 	//				requires activation; 
 	//				requires mail;
 	//				
-	//				//opens ���̺귯���� �������Ű���� to activation , mail;
+	//				//opens 라이브러리를 사용할 패키지명 to activation , mail;
 	//					opens day05 to activation , mail;
 	
-		// 5. ���̹� ���� ����
-				/// 1. ���̹� ���� ȯ�漳��
-				// 2. POP3/IMAP ����
-				// 3. IMAP/SMTP ����
-				// 4. �����  => Ȯ�� 
+		// 5. 네이버 메일 설정
+				// 1. 네이버 메일 환경설정
+				// 2. POP3/IMAP 설정
+				// 3. IMAP/SMTP 설정
+				// 4. 사용함 => 확인 
 	
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.print("받는 사람메일 : ");	String toemail = scanner.next();		// .next() : ����x 
-		// .nextLine() : �տ� next() �ִ°�� ���� �߻� 
-			// ��ó ���1 : ���̿� scanner.nextLine(); �߰� 
+		System.out.print("받는 사람메일 : ");	String toemail = scanner.next();		// .next() : 공백x 
+		// .nextLine() : 앞에 next() 있는경우 오류 발생  
+			// 대처 방법1 : 사이에 scanner.nextLine(); 추가
 		scanner.nextLine();
-		System.out.print("메일 제목 : ");		String title = scanner.nextLine();		// .nextLine() : ����o
+		System.out.print("메일 제목 : ");		String title = scanner.nextLine();		// .nextLine() : 공백o
 		System.out.print("메일 내용 : ");		String contents = scanner.nextLine();	
 		
 		sendmail(toemail, title, contents);
@@ -151,34 +151,49 @@ public class Day14_2 {
 	}
 	
 	public static void sendmail( String toemail , String title , String contents ) {
-								// �μ� : �޴»������ , ���� , ���� 
-		//1. ���� 
+									// 인수 : 받는사람메일 , 제목 , 내용 
+		//1. 설정
 		String fromemail="kjsmrs0403@gmail.com";
-		String frompassword = "password";
+		String frompassword = "비밀번호";
 		
-		Properties properties = new Properties(); 	// �������� [ map �÷��� ] 
-		properties.put("mail.smtp.host", "smtp.gmail.com");		// host : ����ȸ�� ȣ��Ʈ[ ����̸�] // ����ȸ�� ȣ��Ʈ��[ �ش� ����Ʈ������ Ȯ�ΰ��� ] 
-		properties.put("mail.smtp.port", 587);		// port : ����ȸ�� ȣ��Ʈ smtp port[��Ź�ȣ]
-		properties.put("mail.smtp.auth", "true");	// �����ޱ� 
+		Properties props = new Properties(); 	// 설정관련 [ map 컬렉션 ] 
+//		properties.put("mail.smtp.ssl.enable", "true");
+//		properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+//		properties.put("mail.smtp.host", "smtp.gmail.com");		// host : 메일회사 호스트[ 통신이름] // 메일회사 호스트명[ 해당 사이트내에서 확인가능 ]
+//		properties.put("mail.smtp.port", 465);		// port : 메일회사 호스트 smtp port[통신번호]
+//		properties.put("mail.smtp.auth", "true");	// 인증받기 
+	    props.put("mail.transport.protocol", "smtp");
+	    props.put("mail.smtp.host", "smtp.gmail.com");
+	    props.put("mail.smtp.port", "465");
+	    props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.ssl.enable", "true");
+		props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+	 
+	    props.put("mail.smtp.quitwait", "false");
+	    props.put("mail.smtp.socketFactory.port", "465");
+	    props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+	    props.put("mail.smtp.socketFactory.fallback", "false");
 		
-		// 2. ���� 
+		
+		
+		// 2. 인증
 		//Session session = Session.getDefaultInstance( properties , new Authenticator() { } );
-		Session session = Session.getDefaultInstance( properties , new Authenticator(){ 
+		Session session = Session.getDefaultInstance( props , new Authenticator(){ 
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(fromemail, frompassword);
 			}
 		} );
 		
-		// 3. ���Ϻ����� 
+		// 3. 메일보내기
 		try {
-			MimeMessage message = new MimeMessage( session ); // �޽����� ���� ó�� 
-			message.setFrom( new InternetAddress( fromemail )); // �����»�� // ���ܹ߻� ������ �߻� 
+			MimeMessage message = new MimeMessage( session );  // 메시지에 인증 처리 
+			message.setFrom( new InternetAddress( fromemail )); // 보내는사람 // 예외발생 무조건 발생 
 			message.addRecipient( Message.RecipientType.TO , new InternetAddress(toemail ) );
 			
-			message.setSubject(title); // ���� ���� 
-			message.setText(contents); // ���� ����
+			message.setSubject(title); // 메일 제목 
+			message.setText(contents); // 메일 내용
 			
-			Transport.send(message); // ��������
+			Transport.send(message); // 메일전송
 			
 			System.out.println("[[[전송 성공 ]]] : " + toemail );
 			

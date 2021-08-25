@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:controller="Controller.boardviewpageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Label layoutX="438.0" layoutY="31.0" text="게시물">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="337.0" layoutY="52.0" startX="-28.999969482421875" startY="7.62939453125E-6" />
+      <Line endX="100.0" layoutX="570.0" layoutY="51.0" startX="-28.999969482421875" startY="7.62939453125E-6" />
+      <TextField fx:id="txttitle" disable="true" editable="false" layoutX="174.0" layoutY="154.0" prefHeight="30.0" prefWidth="631.0" />
+      <TextArea fx:id="txtcontents" disable="true" editable="false" layoutX="172.0" layoutY="203.0" prefHeight="406.0" prefWidth="631.0" />
+      <Button fx:id="btnboardlist" layoutX="705.0" layoutY="635.0" mnemonicParsing="false" onAction="#boardlist" prefHeight="29.0" prefWidth="95.0" text="목록보기">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnboarddelete" layoutX="606.0" layoutY="635.0" mnemonicParsing="false" onAction="#boarddelete" prefHeight="30.0" prefWidth="95.0" text="삭제">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnboardupdate" layoutX="503.0" layoutY="635.0" mnemonicParsing="false" onAction="#boardupdate" prefHeight="30.0" prefWidth="95.0" text="수정">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblbwriter" layoutX="174.0" layoutY="112.0" prefHeight="30.0" prefWidth="144.0" text="작성자:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblbdate" layoutX="634.0" layoutY="116.0" prefHeight="30.0" prefWidth="170.0" text="작성일:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblbcount" layoutX="634.0" layoutY="77.0" prefHeight="30.0" prefWidth="170.0" text="조회수:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
