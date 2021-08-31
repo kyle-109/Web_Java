@@ -47,7 +47,7 @@ public class BoardDao {
 			preparedStatement.setString(2, boardDto.getBcontents());
 			preparedStatement.setString(3, boardDto.getBwriter());
 			 
-			preparedStatement.executeUpdate(); // insert, update, delet는 update 사용. //select만 excuteQuery사용
+			preparedStatement.executeUpdate(); // insert, update, delete는 update 사용. //select만 excuteQuery사용
 			return true;
 		}catch (Exception e) {}
 		return false;
@@ -79,7 +79,44 @@ public class BoardDao {
 	}
 	//3. 글상세[특정 글 호출] 메소드
 	//4. 글수정[특정 글 수정] 메소드
+	public boolean boardupdate(String title, String contents, int bno){
+		String sql="update board set btitle=? , bcontents=? where bno =?";
+		try {
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, title );
+		preparedStatement.setString(2, contents );
+		preparedStatement.setInt(3, bno);
+		preparedStatement.executeUpdate();
+		return true;
+		}catch (Exception e) {}
+		
+		return false;
+	}
+	
 	//5. 글삭제[특정 글 삭제] 메소드
+	public boolean boarddelete(int bno){
+		String sql="delete from board where bno=?";
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, bno);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {}
+		return false;
+	}
 	//6. 조회수 증가 메소드
+	public boolean boardcount(int bcount, int bno) {
+		
+		String sql = "update board set bcount=? where bno=?";
+		try {
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, bcount);
+		preparedStatement.setInt(2, bno);
+		preparedStatement.executeUpdate();
+		return true;
+		}catch(Exception e) {}
+		return false;
+	}
 }
 

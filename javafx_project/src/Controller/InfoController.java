@@ -109,7 +109,7 @@ public class InfoController implements Initializable{
 				stage.setTitle("포르쉐오너");// 스테이지 타이틀
 				// 스테이지 아이콘
 					// 1. 이미지 불러오기
-					Image image = new Image("file:C:/Users/김정수/eclipse-workspace/javafx_project/src/FXML/porsche.png");
+					Image image = new Image("file:C:/Users/김정수/git/Web_Java/javafx_project/src/FXML/porsche.png");
 					stage.getIcons().add(image);
 					stage.show();
     		}

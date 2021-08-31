@@ -20,3 +20,38 @@
 		
 		DB(DAO)<------> Controller <-----> fxml[씬빌더]
 								   <-dto-> controller
+								   
+	
+	JAVAFX 프로젝트
+		1. 회원
+		2. 게시판
+		3. 제품
+	
+	
+	1. Model(Domain)[데이터]: DB, 파일
+	2. View [프론트엔드]: 씬빌더	 
+	3. Controller[컨트롤:java]:프론트엔드 조작
+	
+	1. 사용자[로그인:아이디/비밀번호]
+	2. 컨트롤러[조작]
+	3. 모델 [실제로 정보를 저장하고 있는 데이터]
+	
+	CRUD:쓰기/읽기/수정/삭제(Create,Read,Update,Delete)
+	
+	DTO(Data Transfer Obejct) : 전송객체
+	DAO(Data Access Object) : 데이터 접근 객체
+	
+	
+	JAVAFX 프로젝트의 용도: 자바 능숙함을 증명할 수 있는 기회.
+	
+	주제
+	1. 편의점 재고 관리 프로그램
+	2. 영화관 키오스크
+	3. 쇼핑몰 재고 관리
+	4. 도서관 자리 입출관리
+	5. 주차장 관리 프로그램
+	
+	
+	
+
+	

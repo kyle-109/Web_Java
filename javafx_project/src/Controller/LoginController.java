@@ -61,40 +61,40 @@ public class LoginController implements Initializable{
 		imgloading.setVisible(false);
 		
 		//저장해놓은 멤버를 불러오기
-		try {
-			fileInputStream = new FileInputStream("C:/Users/김정수/eclipse-workspace/javafx_project/src/Controller/member.txt");
-		} catch (FileNotFoundException e) {
-			try {
-				// 파일을 못 찾으면 빈 파일 생성
-				SignupController.filesave(0);
-			} catch (Exception e1) {
-				System.out.println("파일생성오류");
-				System.out.println("파일로드오류1");
-			}
-		}
-		// 불러온 파일 내용을 저장할 바이트배열
-		byte[] bytearr = new byte[10000];
-		try {
-			//내용을 바이트배열에 저장
-			fileInputStream.read(bytearr);
-		} catch (IOException e) {
-			System.out.println("파일로드오류2");
-		}
-		//바이트 배열을 문자열로 변환
-		String memberList = new String(bytearr);
-		// "\n"기준으로 멤버별로 나눠 문자열배열에 저장
-		String[] member = memberList.split("\n");
-		//각 멤버별로 멤버리스트에 차곡차곡 저장
-		for(int i =0; i<member.length-1; i++) {
-			String[] fields = member[i].split(",");
-			Member temp = new Member(fields[0], fields[1], fields[2], fields[3], fields[4], Integer.parseInt(fields[5]));
-			Domain.List.members.add(temp);
-		}
-		try {
-			fileInputStream.close();
-		} catch (IOException e) {
-			System.out.println("파일입력닫기오류");
-		}
+//		try {
+//			fileInputStream = new FileInputStream("C:/Users/김정수/eclipse-workspace/javafx_project/src/Controller/member.txt");
+//		} catch (FileNotFoundException e) {
+//			try {
+//				// 파일을 못 찾으면 빈 파일 생성
+//				SignupController.filesave(0);
+//			} catch (Exception e1) {
+//				System.out.println("파일생성오류");
+//				System.out.println("파일로드오류1");
+//			}
+//		}
+//		// 불러온 파일 내용을 저장할 바이트배열
+//		byte[] bytearr = new byte[10000];
+//		try {
+//			//내용을 바이트배열에 저장
+//			fileInputStream.read(bytearr);
+//		} catch (IOException e) {
+//			System.out.println("파일로드오류2");
+//		}
+//		//바이트 배열을 문자열로 변환
+//		String memberList = new String(bytearr);
+//		// "\n"기준으로 멤버별로 나눠 문자열배열에 저장
+//		String[] member = memberList.split("\n");
+//		//각 멤버별로 멤버리스트에 차곡차곡 저장
+//		for(int i =0; i<member.length-1; i++) {
+//			String[] fields = member[i].split(",");
+//			Member temp = new Member(fields[0], fields[1], fields[2], fields[3], fields[4], Integer.parseInt(fields[5]));
+//			Domain.List.members.add(temp);
+//		}
+//		try {
+//			fileInputStream.close();
+//		} catch (IOException e) {
+//			System.out.println("파일입력닫기오류");
+//		}
 		
 	}
 	

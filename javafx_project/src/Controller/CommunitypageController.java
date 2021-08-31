@@ -45,7 +45,7 @@ public class CommunitypageController implements Initializable{
 		ObservableList<BoardDto> boardDtos = boardDao.boardlist();
 		
 		//3. 결과를 테이블의 각 필드에 값 넣기
-		TableColumn tc = tableview.getColumns().get(0);//첫번쨰 열[필드] 가져오기
+		TableColumn tc = tableview.getColumns().get(0);//첫번째 열[필드] 가져오기
 		tc.setCellValueFactory(new PropertyValueFactory<>("bno"));
 		
 		tc=tableview.getColumns().get(1);
@@ -72,7 +72,9 @@ public class CommunitypageController implements Initializable{
 				
 						// 테이블에서 선택한 모델[행]의 아이템[셀값]
 				boarddto = tableview.getSelectionModel().getSelectedItem();
-				// 조회수 증가
+				
+				// 조회수 증가, DB에서 bcount초기값이 null로 되어있어서 DB에서 바로 더하기1이 안된다.
+				boardDao.boardcount(boarddto.getBcount()+1, boarddto.getBno());
 				
 				MainpageController.getinstance().loadpage("boardviewpage");
 				

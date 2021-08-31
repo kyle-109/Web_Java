@@ -2,142 +2,38 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProductpageController">
    <children>
-      <AnchorPane layoutX="131.0" layoutY="121.0" prefHeight="200.0" prefWidth="698.0">
-         <children>
-            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../Desktop/Boxster%20spyder.jpg" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="34.0" prefWidth="142.0" text="차종">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="48.0" prefHeight="34.0" prefWidth="142.0" text="년식">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="83.0" prefHeight="34.0" prefWidth="142.0" text="자동차 번호">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="116.0" prefHeight="34.0" prefWidth="142.0" text="보증기간">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="151.0" prefHeight="34.0" prefWidth="142.0" text="수리이력">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="14.0" prefHeight="34.0" prefWidth="210.0" text="박스터 스파이더">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="48.0" prefHeight="34.0" prefWidth="210.0" text="2020">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="83.0" prefHeight="34.0" prefWidth="210.0" text="718가 0718">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="116.0" prefHeight="34.0" prefWidth="210.0" text="2023.12까지">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="151.0" prefHeight="34.0" prefWidth="210.0" text="범퍼파손">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button layoutX="568.0" layoutY="49.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="91.0" text="판매" />
-            <Button layoutX="568.0" layoutY="117.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="91.0" text="정비요청" />
-         </children>
-      </AnchorPane>
-      <Label layoutX="384.0" layoutY="39.0" text="소유 차량 리스트">
+      <Label layoutX="455.0" layoutY="31.0" text="제품">
          <font>
-            <Font size="28.0" />
+            <Font size="34.0" />
          </font>
       </Label>
-      <Line endX="100.0" layoutX="283.0" layoutY="56.0" startX="-15.800018310546875" startY="7.62939453125E-6" />
-      <Line endX="100.0" layoutX="611.0" layoutY="55.0" startX="-15.800018310546875" startY="7.62939453125E-6" />
-      <AnchorPane layoutX="131.0" layoutY="360.0" prefHeight="200.0" prefWidth="698.0">
-         <children>
-            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../../Desktop/porsche-911-speedster.jpg" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="34.0" prefWidth="142.0" text="차종">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="48.0" prefHeight="34.0" prefWidth="142.0" text="년식">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="83.0" prefHeight="34.0" prefWidth="142.0" text="자동차 번호">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="116.0" prefHeight="34.0" prefWidth="142.0" text="보증기간">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="200.0" layoutY="151.0" prefHeight="34.0" prefWidth="142.0" text="수리이력">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="14.0" prefHeight="34.0" prefWidth="210.0" text="911 스피드스터">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="48.0" prefHeight="34.0" prefWidth="210.0" text="2019">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="83.0" prefHeight="34.0" prefWidth="210.0" text="911나 0911">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="116.0" prefHeight="34.0" prefWidth="210.0" text="2022.7까지">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="342.0" layoutY="151.0" prefHeight="34.0" prefWidth="210.0" text="소프트탑 누수">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button layoutX="568.0" layoutY="49.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="91.0" text="판매" />
-            <Button layoutX="568.0" layoutY="117.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="91.0" text="정비요청" />
-         </children>
-      </AnchorPane>
+      <Line endX="100.0" layoutX="337.0" layoutY="52.0" startX="-28.999969482421875" startY="7.62939453125E-6" />
+      <Line endX="100.0" layoutX="570.0" layoutY="51.0" startX="-28.999969482421875" startY="7.62939453125E-6" />
+      <TableView fx:id="tableview" layoutX="427.0" layoutY="98.0" prefHeight="614.0" prefWidth="525.0">
+        <columns>
+          <TableColumn prefWidth="75.19995880126953" text="제품번호" />
+          <TableColumn prefWidth="124.80001831054688" text="제품명" />
+            <TableColumn minWidth="0.0" prefWidth="89.5999755859375" text="카테고리" />
+            <TableColumn prefWidth="73.60003662109375" text="가격" />
+            <TableColumn prefWidth="81.59994506835938" text="재고" />
+            <TableColumn prefWidth="78.39998779296877" text="판매수량" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnproductsum" layoutX="868.0" layoutY="53.0" mnemonicParsing="false" onAction="#productsum" prefHeight="30.0" prefWidth="90.0" text="제품통계" />
+      <Button fx:id="btnproductadd" layoutX="690.0" layoutY="53.0" mnemonicParsing="false" onAction="#productadd" prefHeight="30.0" prefWidth="90.0" text="제품등록" />
+      <Button fx:id="btnproductupdate" layoutX="780.0" layoutY="53.0" mnemonicParsing="false" onAction="#productupdate" prefHeight="30.0" prefWidth="90.0" text="제품수정" />
+      <Label fx:id="lblproductcontents" layoutX="57.0" layoutY="549.0" prefHeight="64.0" prefWidth="319.0" text="상품설명:" />
+      <ImageView fx:id="productimg" fitHeight="335.0" fitWidth="385.0" layoutX="24.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lblproductactivation" layoutX="57.0" layoutY="619.0" prefHeight="64.0" prefWidth="319.0" text="상품 활성화여부:" />
+      <Label fx:id="lblproductname" alignment="CENTER" layoutX="103.0" layoutY="447.0" prefHeight="70.0" prefWidth="226.0" text="제품명" />
    </children>
 </AnchorPane>
